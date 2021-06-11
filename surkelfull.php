@@ -22,11 +22,34 @@
 		<?php
 		include('menu.php');
 		include('sambungan.php');
+		$id=$_GET['id'];
+		$sql= "SELECT * FROM surat_keluar WHERE id_suratkeluar=$id";
+		$query = mysqli_query($conn,$sql);
+		$isi = mysqli_fetch_array($query);
 	    ?>
 		<div class="left col-md-10 p-3 mt-3">
 			<div class="mt-2 ml-5 pt-2 pl-1 mr-2"><h3><i class="fas fa-paper-plane"></i> LIHAT SURAT KELUAR</h3> <hr></div>
             <div class="ml-5 pl-1 p-3">
-				
+				<table class="table table-borderless">
+				<tbody>
+					<tr>
+					<td style="width: 20%">Nomor Surat</td>
+					<td class="text-left"><?php echo ''.$isi['nmr_surat'].'';?></td>
+					</tr>
+					<tr>
+					<td style="width: 20%">Tanggal Surat</td>
+					<td class="text-left"><?php echo ''.$isi['tgl_surat'].'';?></td>
+					</tr>
+					<tr>
+					<td style="width: 20%">Surat Ke</td>
+					<td class="text-left"><?php echo ''.$isi['surat_ke'].'';?></td>
+					</tr>
+					<tr>
+					<td style="width: 20%">Isi Surat</td>
+					<td class="text-left"><?php echo ''.$isi['isi'].'';?></td>
+					</tr>
+				</tbody>
+				</table>
             </div>
 		</div>
 	</div>

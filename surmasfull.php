@@ -22,38 +22,38 @@
 		<?php
 		include('menu.php');
 		include('sambungan.php');
+		$id=$_GET['id'];
+		$sql= "SELECT * FROM surat_masuk WHERE id_suratmasuk=$id";
+		$query = mysqli_query($conn,$sql);
+		$isi = mysqli_fetch_array($query);
 	    ?>
 		<div class="left col-md-10 p-3 mt-3">
 			<div class="mt-2 ml-5 pt-2 pl-1 mr-2"><h3><i class="far fa-paper-plane"></i> LIHAT SURAT MASUK</h3> <hr></div>
             <div class="ml-5 pl-1 p-3">
-				<table class="table table-sm table-bordered col-sm-9">
+				<table class="table table-borderless">
 				<tbody>
-					<?php
-					$sql = "SELECT* FROM pengguna order by id DESC";
-					$query = mysqli_query($conn, $sql);
-					while ($row = mysqli_fetch_array($query)){
-    	        	echo '
-					<tr class="align-middle">
-					<th scope="col" style="width: 7rem;">';
-
-					$foto = $row['foto'];
-					if($foto == true){
-						echo '<img src="./img/'.$row['foto'].' " class="border-0"  style="height: 100px;">';
-					}else{
-						echo '<img src="profile.png" class="border-0"  style="height: 100px;">';
-					}
-					echo '
-					</th>
-					<th scope="col" class="align-text-bottom">
-					<p class="font-weight-normal">
-					Username : '.$row['username'].'<br/>
-					Password : '.$row['password'].'<br/>
-					Sebagai : Admin</p>
-					</th></tr>';
-					}
-					?>
+					<tr>
+					<td style="width: 20%">Nomor Surat</td>
+					<td class="text-left"><?php echo ''.$isi['nmr_surat'].'';?></td>
+					</tr>
+					<tr>
+					<td style="width: 20%">Tanggal Surat</td>
+					<td class="text-left"><?php echo ''.$isi['tgl_surat'].'';?></td>
+					</tr>
+					<tr>
+					<td style="width: 20%">Tanggal Masuk</td>
+					<td class="text-left"><?php echo ''.$isi['tgl_masuk'].'';?></td>
+					</tr>
+					<tr>
+					<td style="width: 20%">Surat Dari</td>
+					<td class="text-left"><?php echo ''.$isi['surat_dari'].'';?></td>
+					</tr>
+					<tr>
+					<td style="width: 20%">Isi Surat</td>
+					<td class="text-left"><?php echo ''.$isi['isi'].'';?></td>
+					</tr>
 				</tbody>
-				</table> 
+				</table>
             </div>
 		</div>
 	</div>
