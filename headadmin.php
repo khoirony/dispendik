@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
         <form class="form-inline my-2 my-lg-0" action="surmascari.php" method="get">
-        <input class="form-control mr-sm-2" type="search" aria-label="Search">
+        <input class="form-control mr-sm-2" type="text" name="cari" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
         </form>
         <li class="nav-item ml-4">
