@@ -12,10 +12,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
         <form class="form-inline my-2 my-lg-0" action="surmascari.php" method="get">
-        <input class="form-control mr-sm-2" type="text" name="cari" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
+        <div class="border">
+        <select id="inputState" name ="pilihan" class="form-control border-0">
+        <option>Nomor</option>
+        <option>Pengirim</option>
+        </select>
+        <input class="form-control border-0" type="text" name="cari" aria-label="Search">
+        <button class="btn btn-outline my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+        </div>
         </form>
-        <li class="nav-item ml-4">
+        <li class="nav-item ml-5">
             <a class="nav-link mr-5 font-weight-bold" href="profil.php" data-toggle="tooltip" data-placement="bottom" title="Profil"><i class="fas fa-user-circle fa-2x"></i></a>
         </li></ul>
         </div>

@@ -25,6 +25,7 @@
 		include('menu.php');
 		include('surmasnav.php');
 		$cari = @$_GET['cari'];
+		$pilihan = @$_GET['pilihan'];
 	    ?>
 		<div class="left col-md-10 p-3 mt-3">
 			<div class="mt-2 ml-5 pt-2 pl-1 mr-2"><h3><i class="far fa-paper-plane"></i> HASIL PENCARIANN DARI "<?php echo $cari; ?> "</h3> <hr></div>
@@ -42,40 +43,80 @@
 				</thead>
 				<tbody>
 				<?php
-				$sql = "SELECT* FROM surat_masuk WHERE surat_dari LIKE '%".$cari."%'";
-				$query = mysqli_query($conn, $sql);
-				$no=1;
 
-				while($row = mysqli_fetch_array($query)){
-					echo '
-					<tr class="align-middle">
-					<th scope="col"><p class="font-weight-normal">'.$no.'</p></th>
-					<th scope="col"><p class="font-weight-normal">'.$row['tgl_masuk'].'</p></th>
-					<th scope="col"><p class="font-weight-normal">'.$row['nmr_surat'].'</p></th>
-					<th scope="col"><p class="font-weight-normal">'.$row['tgl_surat'].'</p></th>
-					<th scope="col"><p class="font-weight-normal">'.$row['surat_dari'].'</p></th>
-					<th scope="col"><p class="font-weight-normal"><center>
-					<div class="btn-group btn-group-toggle" data-toggle="buttons">
-					<label class="btn btn-white btn-sm">
-						<a href="surmasfull.php?id='.$row['id_suratmasuk'].'" class="text-dark" data-toggle="tooltip" data-placement="bottom" title="Selengkapnya">
-						<input type="radio" name="options" id="option1"> <i class="far fa-envelope-open fa-xs"></i>
-						</a>
-					</label>
-					<label class="btn btn-white btn-sm">
-						<a href="surmasedit.php?id='.$row['id_suratmasuk'].'" class="text-dark" data-toggle="tooltip" data-placement="bottom" title="Edit">
-						<input type="radio" name="options" id="option2"> <i class="far fa-edit fa-xs"></i>
-						</a>
-					</label>
-					<label class="btn btn-secondary active btn-sm">
-						<a href="surmashapus.php?id='.$row['id_suratmasuk'].'" class="text-white" data-toggle="tooltip" data-placement="bottom" title="Hapus">
-						<input type="radio" name="options" id="option3"> <i class="far fa-trash-alt fa-xs"></i>
-						</a>
-					</label>
-					</div></center>
-					</p></th></tr>';
-					$no++;
-			
-				}?>
+				if($pilihan == "Pengirim"){
+					$sql = "SELECT* FROM surat_masuk WHERE surat_dari LIKE '%".$cari."%'";
+					$query = mysqli_query($conn, $sql);
+					$no=1;
+
+					while($row = mysqli_fetch_array($query)){
+						echo '
+						<tr class="align-middle">
+						<th scope="col"><p class="font-weight-normal">'.$no.'</p></th>
+						<th scope="col"><p class="font-weight-normal">'.$row['tgl_masuk'].'</p></th>
+						<th scope="col"><p class="font-weight-normal">'.$row['nmr_surat'].'</p></th>
+						<th scope="col"><p class="font-weight-normal">'.$row['tgl_surat'].'</p></th>
+						<th scope="col"><p class="font-weight-normal">'.$row['surat_dari'].'</p></th>
+						<th scope="col"><p class="font-weight-normal"><center>
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-white btn-sm">
+							<a href="surmasfull.php?id='.$row['id_suratmasuk'].'" class="text-dark" data-toggle="tooltip" data-placement="bottom" title="Selengkapnya">
+							<input type="radio" name="options" id="option1"> <i class="far fa-envelope-open fa-xs"></i>
+							</a>
+						</label>
+						<label class="btn btn-white btn-sm">
+							<a href="surmasedit.php?id='.$row['id_suratmasuk'].'" class="text-dark" data-toggle="tooltip" data-placement="bottom" title="Edit">
+							<input type="radio" name="options" id="option2"> <i class="far fa-edit fa-xs"></i>
+							</a>
+						</label>
+						<label class="btn btn-secondary active btn-sm">
+							<a href="surmashapus.php?id='.$row['id_suratmasuk'].'" class="text-white" data-toggle="tooltip" data-placement="bottom" title="Hapus">
+							<input type="radio" name="options" id="option3"> <i class="far fa-trash-alt fa-xs"></i>
+							</a>
+						</label>
+						</div></center>
+						</p></th></tr>';
+						$no++;
+					}
+				}else if($pilihan == "Nomor"){
+					$sql = "SELECT* FROM surat_masuk WHERE nmr_surat LIKE '%".$cari."%'";
+					$query = mysqli_query($conn, $sql);
+					$no=1;
+
+					while($row = mysqli_fetch_array($query)){
+						echo '
+						<tr class="align-middle">
+						<th scope="col"><p class="font-weight-normal">'.$no.'</p></th>
+						<th scope="col"><p class="font-weight-normal">'.$row['tgl_masuk'].'</p></th>
+						<th scope="col"><p class="font-weight-normal">'.$row['nmr_surat'].'</p></th>
+						<th scope="col"><p class="font-weight-normal">'.$row['tgl_surat'].'</p></th>
+						<th scope="col"><p class="font-weight-normal">'.$row['surat_dari'].'</p></th>
+						<th scope="col"><p class="font-weight-normal"><center>
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-white btn-sm">
+							<a href="surmasfull.php?id='.$row['id_suratmasuk'].'" class="text-dark" data-toggle="tooltip" data-placement="bottom" title="Selengkapnya">
+							<input type="radio" name="options" id="option1"> <i class="far fa-envelope-open fa-xs"></i>
+							</a>
+						</label>
+						<label class="btn btn-white btn-sm">
+							<a href="surmasedit.php?id='.$row['id_suratmasuk'].'" class="text-dark" data-toggle="tooltip" data-placement="bottom" title="Edit">
+							<input type="radio" name="options" id="option2"> <i class="far fa-edit fa-xs"></i>
+							</a>
+						</label>
+						<label class="btn btn-secondary active btn-sm">
+							<a href="surmashapus.php?id='.$row['id_suratmasuk'].'" class="text-white" data-toggle="tooltip" data-placement="bottom" title="Hapus">
+							<input type="radio" name="options" id="option3"> <i class="far fa-trash-alt fa-xs"></i>
+							</a>
+						</label>
+						</div></center>
+						</p></th></tr>';
+						$no++;
+					}
+				}
+				
+				
+				
+				?>
 				</tbody>
 				</table>
             </div>

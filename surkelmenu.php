@@ -22,7 +22,7 @@
 		<?php
 		include('sambungan.php');
 		include('menu.php');
-		include('headadmin.php');
+		include('surkelnav.php');
 	    ?>
 		<div class="left col-md-10 p-3 mt-3">
 			<div class="mt-2 ml-5 pt-2 pl-1 mr-2"><h3><i class="fas fa-paper-plane"></i> SURAT KELUAR</h3> <hr></div>

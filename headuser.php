@@ -11,7 +11,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-        <li class="nav-item ml-4">
+        <li class="nav-item ml-5 mr-1">
             <a class="nav-link mr-5 font-weight-bold" href="profil.php" data-toggle="tooltip" data-placement="bottom" title="Profil"><i class="fas fa-user-circle fa-2x"></i></a>
         </li></ul>
         </div>
