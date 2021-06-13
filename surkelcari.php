@@ -23,11 +23,11 @@
 		<?php
 		include('sambungan.php');
 		include('menu.php');
-		include('surmasnav.php');
+		include('surkelnav.php');
 		$cari = @$_GET['cari'];
 	    ?>
 		<div class="left col-md-10 p-3 mt-3">
-			<div class="mt-2 ml-5 pt-2 pl-1 mr-2"><h3><i class="far fa-paper-plane"></i> HASIL PENCARIANN DARI "<?php echo $cari; ?> "</h3> <hr></div>
+			<div class="mt-2 ml-5 pt-2 pl-1 mr-2"><h3><i class="fas fa-paper-plane"></i> HASIL PENCARIAN DARI "<?php echo $cari; ?> "</h3> <hr></div>
 			<div class="ml-5 pl-1 p-3">
 				<table class="table table-sm table-striped table-bordered">
 				<thead>
@@ -42,39 +42,36 @@
 				</thead>
 				<tbody>
 				<?php
-				$sql = "SELECT* FROM surat_masuk WHERE surat_dari LIKE '%".$cari."%'";
+				$sql = "SELECT* FROM surat_keluar WHERE surat_ke LIKE '%".$cari."%'";
 				$query = mysqli_query($conn, $sql);
 				$no=1;
 
 				while($row = mysqli_fetch_array($query)){
 					echo '
-					<tr class="align-middle">
-					<th scope="col"><p class="font-weight-normal">'.$no.'</p></th>
-					<th scope="col"><p class="font-weight-normal">'.$row['tgl_masuk'].'</p></th>
+					<tr class="align-middle"><th scope="col"><p class="font-weight-normal">'.$no.'</p></th>
 					<th scope="col"><p class="font-weight-normal">'.$row['nmr_surat'].'</p></th>
 					<th scope="col"><p class="font-weight-normal">'.$row['tgl_surat'].'</p></th>
-					<th scope="col"><p class="font-weight-normal">'.$row['surat_dari'].'</p></th>
+					<th scope="col"><p class="font-weight-normal">'.$row['surat_ke'].'</p></th>
 					<th scope="col"><p class="font-weight-normal"><center>
 					<div class="btn-group btn-group-toggle" data-toggle="buttons">
 					<label class="btn btn-white btn-sm">
-						<a href="surmasfull.php?id='.$row['id_suratmasuk'].'" class="text-dark" data-toggle="tooltip" data-placement="bottom" title="Selengkapnya">
+						<a href="surkelfull.php?id='.$row['id_suratkeluar'].'" class="text-dark">
 						<input type="radio" name="options" id="option1"> <i class="far fa-envelope-open fa-xs"></i>
 						</a>
 					</label>
 					<label class="btn btn-white btn-sm">
-						<a href="surmasedit.php?id='.$row['id_suratmasuk'].'" class="text-dark" data-toggle="tooltip" data-placement="bottom" title="Edit">
+						<a href="surkeledit.php?id='.$row['id_suratkeluar'].'" class="text-dark">
 						<input type="radio" name="options" id="option2"> <i class="far fa-edit fa-xs"></i>
 						</a>
 					</label>
 					<label class="btn btn-secondary active btn-sm">
-						<a href="surmashapus.php?id='.$row['id_suratmasuk'].'" class="text-white" data-toggle="tooltip" data-placement="bottom" title="Hapus">
+						<a href="surkelhapus.php?id='.$row['id_suratkeluar'].'" class="text-white">
 						<input type="radio" name="options" id="option3"> <i class="far fa-trash-alt fa-xs"></i>
 						</a>
 					</label>
 					</div></center>
 					</p></th></tr>';
 					$no++;
-			
 				}?>
 				</tbody>
 				</table>

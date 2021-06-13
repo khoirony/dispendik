@@ -12,7 +12,7 @@
 			<a class="nav-link text-white" href="surkelmenu.php"><i class="fas fa-paper-plane"></i>  Surat Keluar</a><hr class="bg-secondary">
 		</li>
 		<li class="nav-item">
-			<a class="nav-link text-white" href="list_admin.php" ><i class="fas fa-users"></i>  List Admin</a><hr class="bg-secondary">
+			<a class="nav-link text-white" href="list_user.php" ><i class="fas fa-users"></i>  List User</a><hr class="bg-secondary">
 		</li>
 		<li class="nav-item">
 			<a class="nav-link text-white" href="logout.php" ><i class="fas fa-sign-out-alt"></i>  Keluar</a>
