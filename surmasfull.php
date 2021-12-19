@@ -1,62 +1,101 @@
 <?php
-	session_start();
-	if($_SESSION['pWord']==""){
-		header('Location:login.php?login=belum');
-	}
+// session_start();
+// if($_SESSION['pWord']==""){
+// 	header('Location:login.php?login=belum');
+// }
 ?>
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 	<title>Lihat Surat Masuk</title>
-  </head>
-  <body>
-	<div class="row no-gutters pr-3">
-		<?php
-		include('sambungan.php');
-		include('menu.php');
-		include('surmasnav.php');
-		$id=$_GET['id'];
-		$sql= "SELECT * FROM surat_masuk WHERE id_suratmasuk=$id";
-		$query = mysqli_query($conn,$sql);
-		$isi = mysqli_fetch_array($query);
-	    ?>
-		<div class="left col-md-10 p-3 mt-3">
-			<div class="mt-2 ml-5 pt-2 pl-1 mr-2"><h3><i class="far fa-paper-plane"></i> LIHAT SURAT MASUK</h3> <hr></div>
-            <div class="ml-5 pl-1 p-3">
-				<table class="table table-borderless">
-				<tbody>
-					<tr>
-					<td style="width: 20%">Nomor Surat</td>
-					<td class="text-left"><?php echo ''.$isi['nmr_surat'].'';?></td>
-					</tr>
-					<tr>
-					<td style="width: 20%">Tanggal Surat</td>
-					<td class="text-left"><?php echo ''.$isi['tgl_surat'].'';?></td>
-					</tr>
-					<tr>
-					<td style="width: 20%">Tanggal Masuk</td>
-					<td class="text-left"><?php echo ''.$isi['tgl_masuk'].'';?></td>
-					</tr>
-					<tr>
-					<td style="width: 20%">Surat Dari</td>
-					<td class="text-left"><?php echo ''.$isi['surat_dari'].'';?></td>
-					</tr>
-					<tr>
-					<td style="width: 20%">Isi Surat</td>
-					<td class="text-left"><?php echo ''.$isi['isi'].'';?></td>
-					</tr>
-				</tbody>
-				</table>
-            </div>
+</head>
+
+<body>
+	<?php
+	include('sambungan.php');
+	$id = $_GET['id'];
+	$sql = "SELECT * FROM surat_masuk WHERE id_suratmasuk=$id";
+	$query = mysqli_query($conn, $sql);
+	$isi = mysqli_fetch_array($query);
+	?>
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<?php include('menu.php'); ?>
+		<!-- End of Sidebar -->
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<?php include('surmasnav.php'); ?>
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+				<div class="container ps-5 pe-5">
+
+					<br><br><br><br>
+
+					<!-- Page Heading -->
+					<h1 class="h3 mb-4 mt-2 text-gray-800"><i class="far fa-paper-plane"></i> LIHAT SURAT MASUK</h1>
+
+					<table class="table table-borderless">
+						<tbody>
+							<tr>
+								<td style="width: 20%">Nomor Surat</td>
+								<td class="text-left"><?php echo '' . $isi['nmr_surat'] . ''; ?></td>
+							</tr>
+							<tr>
+								<td style="width: 20%">Tanggal Surat</td>
+								<td class="text-left"><?php echo '' . $isi['tgl_surat'] . ''; ?></td>
+							</tr>
+							<tr>
+								<td style="width: 20%">Tanggal Masuk</td>
+								<td class="text-left"><?php echo '' . $isi['tgl_masuk'] . ''; ?></td>
+							</tr>
+							<tr>
+								<td style="width: 20%">Surat Dari</td>
+								<td class="text-left"><?php echo '' . $isi['surat_dari'] . ''; ?></td>
+							</tr>
+							<tr>
+								<td style="width: 20%">Isi Surat</td>
+								<td class="text-left"><?php echo '' . $isi['isi'] . ''; ?></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; 2020 All Right Reserved - Developed by Khoirony Arief</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
+
 		</div>
+		<!-- End of Content Wrapper -->
+
 	</div>
-  </body>
+	<!-- End of Page Wrapper -->
+
+</body>
+
 </html>
