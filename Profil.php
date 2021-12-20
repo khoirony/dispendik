@@ -10,9 +10,6 @@
 </head>
 
 <body>
-	<?php
-	include('sambungan.php');
-	?>
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
@@ -36,63 +33,25 @@
 					<br><br><br><br>
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 mt-2 text-gray-800"><i class="fas fa-users"></i> PROFIL</h1>
+					<h1 class="h3 mb-4 mt-2 text-gray-800"><i class="fas fa-fw fa-user"></i> MY PROFILE</h1>
 
-					<table class="table table-sm table-striped table-bordered">
-						<thead>
-							<tr>
-								<th scope="col">
-									<p class="text-center">No</p>
-								</th>
-								<th scope="col">
-									<p class="text-left">Nomor Surat</p>
-								</th>
-								<th scope="col">
-									<p class="text-left">Tanggal Surat</p>
-								</th>
-								<th scope="col">
-									<p class="text-left">Kepada</p>
-								</th>
-								<th scope="col">
-									<p class="text-center">Opsi</p>
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-							$sql = 'SELECT* FROM surat_keluar order by tgl_surat DESC';
-							$query = mysqli_query($conn, $sql);
-							$no = 1;
-							while ($row = mysqli_fetch_array($query)) {
-								echo '
-								<tr class="align-middle"><th scope="col"><p class="font-weight-normal">' . $no . '</p></th>
-								<th scope="col"><p class="font-weight-normal">' . $row['nmr_surat'] . '</p></th>
-								<th scope="col"><p class="font-weight-normal">' . $row['tgl_surat'] . '</p></th>
-								<th scope="col"><p class="font-weight-normal">' . $row['surat_ke'] . '</p></th>
-								<th scope="col"><p class="font-weight-normal"><center>
-								<div class="btn-group btn-group-toggle" data-toggle="buttons">
-								<label class="btn btn-white btn-sm">
-									<a href="surkelfull.php?id=' . $row['id_suratkeluar'] . '" class="text-dark">
-									<input type="radio" name="options" id="option1"> <i class="far fa-envelope-open fa-xs"></i>
-									</a>
-								</label>
-								<label class="btn btn-white btn-sm">
-									<a href="surkeledit.php?id=' . $row['id_suratkeluar'] . '" class="text-dark">
-									<input type="radio" name="options" id="option2"> <i class="far fa-edit fa-xs"></i>
-									</a>
-								</label>
-								<label class="btn btn-secondary active btn-sm">
-									<a href="surkelhapus.php?id=' . $row['id_suratkeluar'] . '" class="text-white">
-									<input type="radio" name="options" id="option3"> <i class="far fa-trash-alt fa-xs"></i>
-									</a>
-								</label>
-								</div></center>
-								</p></th></tr>';
-								$no++;
-							}
-							?>
-						</tbody>
-					</table>
+					<br><br>
+
+					<div class="row justify-content-center">
+						<div class="col-md-3">
+							<img src="./img/<?= $_SESSION['foto'] ?>" class="border-0 rounded-circle" style="height: 200px;">
+						</div>
+						<div class="col-2 pt-5">
+							ID User <br><br>
+							Username <br><br>
+							Password <br>
+						</div>
+						<div class="col-3 pt-5">
+							<?php echo $_SESSION['id_user']; ?> <br><br>
+							<?php echo $_SESSION['username']; ?> <br><br>
+							<?php echo $_SESSION['password']; ?> <br>
+						</div>
+					</div>
 
 				</div>
 				<!-- /.container-fluid -->
@@ -115,7 +74,6 @@
 
 	</div>
 	<!-- End of Page Wrapper -->
-
 </body>
 
 </html>
