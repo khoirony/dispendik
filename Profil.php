@@ -1,73 +1,121 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 	<title>Dashboard</title>
-  </head>
-  <body>
-	<div class="row no-gutters pr-3">
-		<?php
-		include('sambungan.php');
-		include('menu.php');
-		include('headuser.php');
-	    ?>
-		<div class="left col-md-10 p-3 mt-3">
-			<div class="mt-2 ml-5 pt-2 pl-1 mr-2"><h3><i class="fas fa-users"></i>  PROFIL</h3> <hr></div>
-			<div class="row ml-5 pt-3 pb-5">
-				<div class="mb-3 ml-auto mr-3"><a class="btn btn-primary" href="surkeltambah.php" role="button"><i class="far fa-plus-square"></i> Tambah Surat</a></div>
-				<table class="table table-sm table-striped table-bordered">
-				<thead>
-					<tr>
-					<th scope="col"><p class="text-center">No</p></th>
-					<th scope="col"><p class="text-left">Nomor Surat</p></th>
-					<th scope="col"><p class="text-left">Tanggal Surat</p></th>
-					<th scope="col"><p class="text-left">Kepada</p></th>
-					<th scope="col"><p class="text-center">Opsi</p></th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php
-					$sql = 'SELECT* FROM surat_keluar order by tgl_surat DESC';
-					$query = mysqli_query($conn, $sql);
-					$no=1;
-					while ($row = mysqli_fetch_array($query)){
-    	        	echo '
-					<tr class="align-middle"><th scope="col"><p class="font-weight-normal">'.$no.'</p></th>
-					<th scope="col"><p class="font-weight-normal">'.$row['nmr_surat'].'</p></th>
-					<th scope="col"><p class="font-weight-normal">'.$row['tgl_surat'].'</p></th>
-					<th scope="col"><p class="font-weight-normal">'.$row['surat_ke'].'</p></th>
-					<th scope="col"><p class="font-weight-normal"><center>
-					<div class="btn-group btn-group-toggle" data-toggle="buttons">
-					<label class="btn btn-white btn-sm">
-						<a href="surkelfull.php?id='.$row['id_suratkeluar'].'" class="text-dark">
-						<input type="radio" name="options" id="option1"> <i class="far fa-envelope-open fa-xs"></i>
-						</a>
-					</label>
-					<label class="btn btn-white btn-sm">
-						<a href="surkeledit.php?id='.$row['id_suratkeluar'].'" class="text-dark">
-						<input type="radio" name="options" id="option2"> <i class="far fa-edit fa-xs"></i>
-						</a>
-					</label>
-					<label class="btn btn-secondary active btn-sm">
-						<a href="surkelhapus.php?id='.$row['id_suratkeluar'].'" class="text-white">
-						<input type="radio" name="options" id="option3"> <i class="far fa-trash-alt fa-xs"></i>
-						</a>
-					</label>
-					</div></center>
-					</p></th></tr>';
-					$no++;
-					}
-					?>
-				</tbody>
-				</table>
+</head>
+
+<body>
+	<?php
+	include('sambungan.php');
+	?>
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<?php include('menu.php'); ?>
+		<!-- End of Sidebar -->
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<?php include('surkelnav.php'); ?>
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+				<div class="container ps-5 pe-5">
+
+					<br><br><br><br>
+
+					<!-- Page Heading -->
+					<h1 class="h3 mb-4 mt-2 text-gray-800"><i class="fas fa-users"></i> PROFIL</h1>
+
+					<table class="table table-sm table-striped table-bordered">
+						<thead>
+							<tr>
+								<th scope="col">
+									<p class="text-center">No</p>
+								</th>
+								<th scope="col">
+									<p class="text-left">Nomor Surat</p>
+								</th>
+								<th scope="col">
+									<p class="text-left">Tanggal Surat</p>
+								</th>
+								<th scope="col">
+									<p class="text-left">Kepada</p>
+								</th>
+								<th scope="col">
+									<p class="text-center">Opsi</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							$sql = 'SELECT* FROM surat_keluar order by tgl_surat DESC';
+							$query = mysqli_query($conn, $sql);
+							$no = 1;
+							while ($row = mysqli_fetch_array($query)) {
+								echo '
+								<tr class="align-middle"><th scope="col"><p class="font-weight-normal">' . $no . '</p></th>
+								<th scope="col"><p class="font-weight-normal">' . $row['nmr_surat'] . '</p></th>
+								<th scope="col"><p class="font-weight-normal">' . $row['tgl_surat'] . '</p></th>
+								<th scope="col"><p class="font-weight-normal">' . $row['surat_ke'] . '</p></th>
+								<th scope="col"><p class="font-weight-normal"><center>
+								<div class="btn-group btn-group-toggle" data-toggle="buttons">
+								<label class="btn btn-white btn-sm">
+									<a href="surkelfull.php?id=' . $row['id_suratkeluar'] . '" class="text-dark">
+									<input type="radio" name="options" id="option1"> <i class="far fa-envelope-open fa-xs"></i>
+									</a>
+								</label>
+								<label class="btn btn-white btn-sm">
+									<a href="surkeledit.php?id=' . $row['id_suratkeluar'] . '" class="text-dark">
+									<input type="radio" name="options" id="option2"> <i class="far fa-edit fa-xs"></i>
+									</a>
+								</label>
+								<label class="btn btn-secondary active btn-sm">
+									<a href="surkelhapus.php?id=' . $row['id_suratkeluar'] . '" class="text-white">
+									<input type="radio" name="options" id="option3"> <i class="far fa-trash-alt fa-xs"></i>
+									</a>
+								</label>
+								</div></center>
+								</p></th></tr>';
+								$no++;
+							}
+							?>
+						</tbody>
+					</table>
+
+				</div>
+				<!-- /.container-fluid -->
+
 			</div>
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; 2020 All Right Reserved - Developed by Khoirony Arief</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
+
 		</div>
+		<!-- End of Content Wrapper -->
+
 	</div>
-  </body>
+	<!-- End of Page Wrapper -->
+
+</body>
+
 </html>

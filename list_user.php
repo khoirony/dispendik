@@ -1,64 +1,101 @@
 <?php
-	session_start();
-	if($_SESSION['pWord']==""){
-		header('Location:login.php?login=belum');
-	}
+// session_start();
+// if ($_SESSION['pWord'] == "") {
+// 	header('Location:login.php?login=belum');
+// }
 ?>
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style.css">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 	<title>List Pengguna</title>
-  </head>
-  <body>
-	<div class="row no-gutters pr-3">
-		<?php
-		include('sambungan.php');
-		include('menu.php');
-		include('headuser.php');
-	    ?>
-		<div class="left col-md-10 p-3 mt-3">
-			<div class="mt-2 ml-5 pt-2 pl-1 mr-2"><h3><i class="fas fa-users"></i> LIST PENGGUNA</h3> <hr></div>
-			<div class="row ml-5 pt-3 pb-5">
-				<table class="table table-sm table-bordered col-sm-9">
-				<tbody>
-					<?php
-					$sql = "SELECT* FROM pengguna order by id DESC";
-					$query = mysqli_query($conn, $sql);
-					while ($row = mysqli_fetch_array($query)){
-    	        	echo '
-					<tr class="align-middle">
-					<th scope="col" style="width: 7rem;">';
+</head>
 
-					$foto = $row['foto'];
-					if($foto == true){
-						echo '<img src="./img/'.$row['foto'].' " class="border-0"  style="height: 100px;">';
-					}else{
-						echo '<img src="profile.png" class="border-0"  style="height: 100px;">';
-					}
-					echo '
-					</th>
-					<th scope="col" class="align-text-bottom">
-					<p class="font-weight-normal">
-					Username : '.$row['username'].'<br/>
-					Password : '.$row['password'].'<br/>
-					Sebagai : Admin</p>
-					</th></tr>';
-					}
-					?>
-				</tbody>
-				</table>
-				<br/>
+<body>
+	<?php
+	include('sambungan.php');
+	?>
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<?php include('menu.php'); ?>
+		<!-- End of Sidebar -->
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<?php include('surkelnav.php'); ?>
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+				<div class="container ps-5 pe-5">
+
+					<br><br><br><br>
+
+					<!-- Page Heading -->
+					<h1 class="h3 mb-4 mt-2 text-gray-800"><i class="fas fa-users"></i> LIST PENGGUNA</h1>
+
+					<table class="table table-sm table-bordered col-sm-9">
+						<tbody>
+							<?php
+							$sql = "SELECT* FROM pengguna order by id DESC";
+							$query = mysqli_query($conn, $sql);
+							while ($row = mysqli_fetch_array($query)) {
+								echo '
+								<tr class="align-middle">
+								<th scope="col" style="width: 7rem;">';
+
+								$foto = $row['foto'];
+								if ($foto == true) {
+									echo '<img src="./img/' . $row['foto'] . ' " class="border-0"  style="height: 100px;">';
+								} else {
+									echo '<img src="profile.png" class="border-0"  style="height: 100px;">';
+								}
+								echo '
+								</th>
+								<th scope="col" class="align-text-bottom">
+								<p class="font-weight-normal">
+								Username : ' . $row['username'] . '<br/>
+								Password : ' . $row['password'] . '<br/>
+								Sebagai : Admin</p>
+								</th></tr>';
+							}
+							?>
+						</tbody>
+					</table>
+
 				</div>
+				<!-- /.container-fluid -->
+
 			</div>
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; 2020 All Right Reserved - Developed by Khoirony Arief</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
+
 		</div>
+		<!-- End of Content Wrapper -->
+
 	</div>
-  </body>
+	<!-- End of Page Wrapper -->
+
+</body>
+
 </html>
