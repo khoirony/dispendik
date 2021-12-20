@@ -1,3 +1,9 @@
+<?php
+session_start();
+if ($_SESSION['password'] == "") {
+    header('Location:login.php?pesan=4');
+}
+?>
 <!doctype html>
 <html lang="en">
 
