@@ -15,33 +15,39 @@
     include('sambungan.php');
     ?>
 
-    <?php
-    if (isset($_POST['Submit'])) {
-        $username = $_POST['userName'];
-        $password = $_POST['passWord'];
-        $repass = $_POST['repassWord'];
-
-        $result = mysqli_query($conn, "SELECT * FROM pengguna WHERE username='$username'");
-        $row = mysqli_fetch_array($result);
-        $cekuser = $row['username'];
-
-        if (strcmp($username, $cekuser) == 0) {
-            echo '<p class="ml-5 text-danger">Username sudah digunakan, Coba username lain</p>';
-        } else if (strcmp($repass, $password) == 0) {
-            $result = mysqli_query($conn, "INSERT INTO pengguna(username,password) VALUES('$username','$password')");
-            echo '<h6 class="ml-5">Akun baru berhasil dibuat. <a href="login.php"><span class="badge badge-primary">Login</span></a></h6> ';
-        } else if (strcmp($repass, $password) != 0) {
-            echo '<p class="ml-5 text-danger">Password yang anda masukkan tidak sama!</p>';
-        } else if ($password == 0 || $repass == 0) {
-            echo ' ';
-        }
-    }
-    ?>
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5 login p-5 shadow">
                 <p class="text-center text-dark fs-2 fw-bold"> Daftar Admin </p>
+                <br>
+                <?php
+                if (isset($_POST['Submit'])) {
+                    $username = $_POST['userName'];
+                    $password = $_POST['passWord'];
+                    $repass = $_POST['repassWord'];
+
+
+                    if ($username != "" && $password != "" && $repass != "") {
+                        $result = mysqli_query($conn, "SELECT * FROM pengguna WHERE username='$username'");
+                        $row = mysqli_fetch_array($result);
+
+                        if (strcmp($repass, $password) == 0) {
+                            $result = mysqli_query($conn, "INSERT INTO pengguna(username,password) VALUES('$username','$password')");
+                            echo '<div class="alert alert-warning lengkung pt-2 pb-2" role="alert">Akun baru berhasil dibuat. <a class="text-primary" href="login.php">Login</a></div> ';
+                        } else if (strcmp($repass, $password) != 0) {
+                            echo '<div class="alert alert-danger lengkung pt-2 pb-2" role="alert">Password yang anda masukkan tidak sama!</div>';
+                        } else if (strcmp($username, $row['username']) == 0) {
+                            echo '<div class="alert alert-danger lengkung pt-2 pb-2" role="alert">Username sudah digunakan, Coba username lain</div>';
+                        }
+                    } else if ($username == "") {
+                        echo '<div class="alert alert-danger lengkung pt-2 pb-2" role="alert">Silahkan isi form username terlebih dahulu</div>';
+                    } else if ($password == "") {
+                        echo '<div class="alert alert-danger lengkung pt-2 pb-2" role="alert">Silahkan isi form password terlebih dahulu</div>';
+                    } else if ($repass == "") {
+                        echo '<div class="alert alert-danger lengkung pt-2 pb-2" role="alert">Silahkan masukkan ulang password anda</div>';
+                    }
+                }
+                ?>
                 <br />
                 <form name="login" action="./daftar.php" method="POST">
                     <div class="mb-4">
