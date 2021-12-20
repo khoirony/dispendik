@@ -16,6 +16,10 @@
   font-size: 90px;
 }
 
+.profpic {
+  width: 30px;
+}
+
 .search {
   padding: 8px 15px;
   background: rgba(50, 50, 50, 0.2);

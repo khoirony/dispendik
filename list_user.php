@@ -1,10 +1,3 @@
-<?php
-// session_start();
-// if ($_SESSION['pWord'] == "") {
-// 	header('Location:login.php?login=belum');
-// }
-?>
-
 <!doctype html>
 <html lang="en">
 
@@ -34,7 +27,7 @@
 			<div id="content">
 
 				<!-- Topbar -->
-				<?php include('surkelnav.php'); ?>
+				<?php include('headuser.php'); ?>
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->

@@ -1,3 +1,9 @@
+<?php
+session_start();
+if ($_SESSION['password'] == "") {
+  header('Location:login.php?pesan=4');
+}
+?>
 <!doctype html>
 <html lang="en">
 
@@ -28,7 +34,15 @@
           </div>
         </form>
         <li class="nav-item ml-5">
-          <a class="nav-link mr-5 font-weight-bold" href="profil.php" data-toggle="tooltip" data-placement="bottom" title="Profil"><i class="fas fa-user-circle fa-2x"></i></a>
+          <a class="nav-link mr-5 font-weight-bold" href="profil.php" data-toggle="tooltip" data-placement="bottom" title="Profil">
+            <?php
+            if ($_SESSION['foto'] != "") {
+              echo '<img src="./img/' . $_SESSION['foto'] . ' " class="border-0 rounded-circle"  style="height: 40px;">';
+            } else {
+              echo '<img src="profile.png" class="border-0 rounded-circle"  style="height: 40px;">';
+            }
+            ?>
+          </a>
         </li>
       </ul>
     </div>

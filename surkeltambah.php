@@ -1,10 +1,3 @@
-<?php
-// session_start();
-// if($_SESSION['pWord']==""){
-// 	header('Location:login.php?login=belum');
-// }
-?>
-
 <!doctype html>
 <html lang="en">
 

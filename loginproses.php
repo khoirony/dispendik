@@ -1,21 +1,32 @@
 <?php
-$userName = $_POST['userName'];
-$passWord = $_POST['passWord'];
-include('sambungan.php');
-$sql = "SELECT * FROM pengguna WHERE username='$userName' AND password='$passWord' ";
-$query = mysqli_query($conn, $sql);
-$admin = mysqli_fetch_array($query);
+$userName = $_POST['username'];
+$passWord = $_POST['password'];
+
 
 session_start();
-$_SESSION['uName'] = $admin['username'];
-$_SESSION['pWord'] = $admin['password'];
+include('sambungan.php');
 
-if (strcmp($passWord, $admin['password']) == 0) {
-	header('Location:dashboard.php');
-} else if (strcmp($passWord, "") == 0) {
-	header('Location:login.php?login=pass');
-} else if (strcmp($userName, "") == 0) {
-	header('Location:login.php?login=user');
+if ($userName != "" && $passWord != "") {
+	$sql = "SELECT * FROM pengguna WHERE username='$userName' AND password='$passWord'";
+	$hasil = mysqli_query($conn, $sql);
+	$jumlah = mysqli_num_rows($hasil);
+
+	if ($jumlah > 0) {
+		$row = mysqli_fetch_assoc($hasil);
+		$_SESSION["id_user"] = $row["id"];
+		$_SESSION["username"] = $row["username"];
+		$_SESSION["password"] = $row["password"];
+		$_SESSION["foto"] = $row["foto"];
+
+
+		header("Location:dashboard.php");
+	} else {
+		header('Location:login.php?pesan=3');
+	}
+} else if ($userName == "") {
+	header('Location:login.php?pesan=1');
+} else if ($passWord == "") {
+	header('Location:login.php?pesan=2');
 } else {
-	header('Location:login.php?login=gagal');
+	header('Location:login.php?pesan=4');
 }
