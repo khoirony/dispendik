@@ -12,11 +12,13 @@ if ($_SESSION['password'] == "") {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Judul -->
     <title>Edit Surat Masuk</title>
 </head>
 
 <body>
     <?php
+    // Menghubungkan database
     include('sambungan.php');
     ?>
     <!-- Page Wrapper -->
@@ -24,7 +26,6 @@ if ($_SESSION['password'] == "") {
 
         <!-- Sidebar -->
         <?php include('menu.php'); ?>
-        <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -34,7 +35,6 @@ if ($_SESSION['password'] == "") {
 
                 <!-- Topbar -->
                 <?php include('surmasnav.php'); ?>
-                <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container ps-5 pe-5">
@@ -45,26 +45,38 @@ if ($_SESSION['password'] == "") {
                     <h1 class="h3 mb-4 mt-2 text-gray-800"><i class="far fa-paper-plane"></i> EDIT SURAT MASUK</h1>
 
                     <?php
-                    // Check If form submitted, insert form data into users table.
+                    // Menangkap id
                     $id = $_GET['id'];
+
+                    // Cek form
                     if (isset($_POST['Submit'])) {
+
+                        // Menangkap isi form
                         $tanggal_masuk = $_POST['tanggal_masuk'];
                         $nomor_surat = $_POST['nomor_surat'];
                         $tanggal_surat = $_POST['tanggal_surat'];
                         $pengirim = $_POST['pengirim'];
                         $isi = $_POST['isi'];
 
-                        // include database connection file
+                        // Memasukkan data form ke database
                         $result = mysqli_query($conn, "INSERT INTO surat_masuk(tgl_masuk,nmr_surat,	tgl_surat,surat_dari,isi) VALUES('$tanggal_masuk','$nomor_surat','$tanggal_surat','$pengirim','$isi')");
+
+                        // Menampilkan Notif Berhasil
                         echo '
-                    <h6>Surat Masuk Berhasil Diperbaharui. <a href="surmasmenu.php"><span class="badge badge-secondary">List Surat masuk</span></a></h6><br/>';
+                        <h6>Surat Masuk Berhasil Diperbaharui. <a href="surmasmenu.php"><span class="badge badge-secondary">List Surat masuk</span></a></h6><br/>';
                     }
                     ?>
+
                     <?php
+
+                    // Mengambil data surat berdasarkan id
                     $sql = 'SELECT* FROM surat_masuk where id_suratmasuk=' . $id;
                     $query = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_array($query);
-                    echo '<form action="surmasedit.php" method="POST">
+
+                    // Form edit surat
+                    echo '
+                    <form action="surmasedit.php" method="POST">
                     <div class="form-group">
                         <label>Tanggal Masuk</label>
                         <input type="text" name="tanggal_masuk" class="form-control form-control-lg" value="' . $row['tgl_masuk'] . '">
@@ -86,7 +98,8 @@ if ($_SESSION['password'] == "") {
                         <textarea type="text" name="isi" class="form-control form-control-lg" rows="5">' . $row['isi'] . '</textarea>
                     </div>
                     <input class="btn btn-primary" type="submit" name="Submit" value="Edit Surat">
-                </form>';
+                    </form>';
+                    // End of form
                     ?>
 
                 </div>

@@ -12,11 +12,13 @@ if ($_SESSION['password'] == "") {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<!-- judul -->
 	<title>List Pengguna</title>
 </head>
 
 <body>
 	<?php
+	// Menghubungkan database
 	include('sambungan.php');
 	?>
 	<!-- Page Wrapper -->
@@ -24,7 +26,6 @@ if ($_SESSION['password'] == "") {
 
 		<!-- Sidebar -->
 		<?php include('menu.php'); ?>
-		<!-- End of Sidebar -->
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -34,7 +35,6 @@ if ($_SESSION['password'] == "") {
 
 				<!-- Topbar -->
 				<?php include('headuser.php'); ?>
-				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
 				<div class="container ps-5 pe-5">
@@ -44,6 +44,7 @@ if ($_SESSION['password'] == "") {
 					<!-- Page Heading -->
 					<h1 class="h3 mb-4 mt-2 text-gray-800"><i class="fas fa-users"></i> LIST PENGGUNA</h1>
 
+					<!-- Menampilkan list user -->
 					<table class="table table-sm table-bordered col-sm-9">
 						<tbody>
 							<?php
@@ -72,6 +73,7 @@ if ($_SESSION['password'] == "") {
 							?>
 						</tbody>
 					</table>
+					<!-- End Of list -->
 
 				</div>
 				<!-- /.container-fluid -->

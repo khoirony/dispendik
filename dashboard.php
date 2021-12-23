@@ -12,11 +12,13 @@ if ($_SESSION['password'] == "") {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<!-- Judul -->
 	<title>Dashboard</title>
 </head>
 
 <body>
 	<?php
+	// Menghubungkan dengan database
 	include('sambungan.php');
 	?>
 	<!-- Page Wrapper -->
@@ -44,6 +46,7 @@ if ($_SESSION['password'] == "") {
 					<!-- Page Heading -->
 					<h1 class="h3 mb-4 mt-2 text-gray-800"><i class="fas fa-tachometer-alt"></i> DASHBOARD</h1>
 
+					<!-- Content -->
 					<div class="row text-white pt-3 pb-5">
 						<div class="card bg-info ms-3" style="width: 19rem;">
 							<div class="card-body">
@@ -117,6 +120,7 @@ if ($_SESSION['password'] == "") {
 							</div>
 						</div>
 					</div>
+					<!-- End Of Content -->
 
 				</div>
 				<!-- /.container-fluid -->

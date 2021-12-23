@@ -6,7 +6,7 @@
 		<div class="sidebar-brand-icon rotate-n-15">
 			<i class="fas fa-laugh-wink"></i>
 		</div>
-		<div class="sidebar-brand-text mx-3">Dispendik <sup>2</sup></div>
+		<div class="sidebar-brand-text mx-3">Dispendik</div>
 	</a>
 
 	<!-- Divider -->
@@ -28,12 +28,14 @@
 		Administrasi
 	</div>
 
+	<!-- Nav Item - Surat Masuk -->
 	<li class="nav-item">
 		<a class="nav-link" href="surmasmenu.php">
 			<i class="far fa-fw fa-paper-plane"></i>
 			<span>Surat Masuk</span></a>
 	</li>
 
+	<!-- Nav Item - Surat Keluar -->
 	<li class="nav-item">
 		<a class="nav-link" href="surkelmenu.php">
 			<i class="fas fa-fw fa-paper-plane"></i>

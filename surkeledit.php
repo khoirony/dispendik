@@ -12,11 +12,13 @@ if ($_SESSION['password'] == "") {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Judul -->
     <title>Edit Surat Keluar</title>
 </head>
 
 <body>
     <?php
+    // menghubungkan database
     include('sambungan.php');
     ?>
     <!-- Page Wrapper -->
@@ -45,23 +47,27 @@ if ($_SESSION['password'] == "") {
                     <h1 class="h3 mb-4 mt-2 text-gray-800"><i class="fas fa-paper-plane"></i> EDIT SURAT KELUAR</h1>
 
                     <?php
-                    // Check If form submitted, insert form data into users table.
                     if (isset($_POST['Submit'])) {
+                        // menangkap data hasil submit form edit surat
                         $nomor_surat = $_POST['nomor_surat'];
                         $tanggal_surat = $_POST['tanggal_surat'];
                         $kepada = $_POST['kepada'];
                         $isi = $_POST['isi'];
 
-                        // include database connection file
+                        // memasukkan data form edit kedalam database
                         $result = mysqli_query($conn, "INSERT INTO surat_keluar(nmr_surat,tgl_surat,surat_ke,isi) VALUES('$nomor_surat','$tanggal_surat','$kepada','$isi')");
+
+                        // menampilkan notifikasi berhasil
                         echo '
-                    <h6>Surat Keluar Berhasil Diperbaharui. <a href="surkelmenu.php"><span class="badge badge-secondary">List Surat Keluar</span></a></h6><br/>';
+                        <h6>Surat Keluar Berhasil Diperbaharui. <a href="surkelmenu.php"><span class="badge badge-secondary">List Surat Keluar</span></a></h6><br/>';
                     }
                     ?>
                     <?php
-                    $sql = 'SELECT* FROM surat_keluar';
+                    // mengambil data surat keluar berdasarkan id
+                    $sql = 'SELECT* FROM surat_keluar where id_suratkeluar=' . $_GET['id'];
                     $query = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_array($query);
+                    // menamilkan form edit surat
                     echo '
                     <form action="surkeledit.php" method="POST">
                     <div class="form-group">

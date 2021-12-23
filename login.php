@@ -6,20 +6,26 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<!-- Judul -->
 	<title>Login Admin</title>
 </head>
 
 <body>
+	<!-- Navbar -->
 	<?php include('header.php'); ?>
 
 	<div class="container">
 
+		<!-- Wadah Form Login -->
 		<div class="row justify-content-center">
 			<div class="col-md-5 login p-5 shadow">
 				<p class="text-center text-dark fs-2 fw-bold">Login Admin</p>
 				<br>
+				<!-- notifikasi error login -->
 				<div id="pesan"></div>
 				<br>
+
+				<!-- Form Login -->
 				<form method="post" action="loginproses.php">
 					<div class="mb-4">
 						<input type="text" class="form-control form-control-lg lengkung" id="username" name="username" placeholder="Username">
@@ -34,13 +40,10 @@
 			</div>
 		</div>
 	</div>
-	<!-- Optional JavaScript; choose one of the two! -->
-
-	<!-- Option 1: Bootstrap Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 <script>
+	// Mengambil pesan php GET dari url
 	function GetURLParameter(sParam) {
 		var sPageURL = window.location.search.substring(1);
 		var sURLVariables = sPageURL.split('&');
@@ -54,6 +57,7 @@
 	var pesan = GetURLParameter('pesan');
 	var temp = document.getElementById("pesan").value;
 
+	// pesan dari url diterjemahkan dan ditampilkan ke dalam html
 	if (pesan == 3) {
 		document.getElementById("pesan").innerHTML = 'Username dan Password salah!';
 	} else if (pesan == 1) {

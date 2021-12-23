@@ -12,6 +12,7 @@ if ($_SESSION['password'] == "") {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<!-- Judul -->
 	<title>Dashboard</title>
 </head>
 
@@ -43,6 +44,7 @@ if ($_SESSION['password'] == "") {
 
 					<br><br>
 
+					<!-- Content -->
 					<div class="row justify-content-center">
 						<div class="col-md-3">
 							<img src="./img/<?= $_SESSION['foto'] ?>" class="border-0 rounded-circle" style="height: 200px;">
@@ -58,6 +60,7 @@ if ($_SESSION['password'] == "") {
 							<?php echo $_SESSION['password']; ?> <br>
 						</div>
 					</div>
+					<!-- End of Content -->
 
 				</div>
 				<!-- /.container-fluid -->

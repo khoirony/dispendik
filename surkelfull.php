@@ -12,14 +12,18 @@ if ($_SESSION['password'] == "") {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<!-- Judul -->
 	<title>Lihat Surat Keluar</title>
 </head>
 
 <body>
 	<?php
+	// Menghubungkan database
 	include('sambungan.php');
 
+	// menangkap id database
 	$id = $_GET['id'];
+	// mencari data base berdasarkan id
 	$sql = "SELECT * FROM surat_keluar WHERE id_suratkeluar=$id";
 	$query = mysqli_query($conn, $sql);
 	$isi = mysqli_fetch_array($query);
@@ -49,6 +53,7 @@ if ($_SESSION['password'] == "") {
 					<!-- Page Heading -->
 					<h1 class="h3 mb-4 mt-2 text-gray-800"><i class="fas fa-paper-plane"></i> LIHAT SURAT KELUAR</h1>
 
+					<!-- Content -->
 					<table class="table table-borderless">
 						<tbody>
 							<tr>
@@ -69,6 +74,7 @@ if ($_SESSION['password'] == "") {
 							</tr>
 						</tbody>
 					</table>
+					<!-- End Of Content -->
 
 				</div>
 				<!-- /.container-fluid -->

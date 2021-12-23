@@ -12,23 +12,25 @@ if ($_SESSION['password'] == "") {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<!-- Judul -->
 	<title>Surat Masuk</title>
 </head>
 
 <body>
 	<?php
+	// Menghubungkan Database
 	include('sambungan.php');
-	include('menu.php');
-	include('surmasnav.php');
+
+	// Menangkap pesan url
 	$cari = @$_GET['cari'];
 	$pilihan = @$_GET['pilihan'];
 	?>
+
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
 		<!-- Sidebar -->
 		<?php include('menu.php'); ?>
-		<!-- End of Sidebar -->
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -38,7 +40,6 @@ if ($_SESSION['password'] == "") {
 
 				<!-- Topbar -->
 				<?php include('surkelnav.php'); ?>
-				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
 				<div class="container ps-5 pe-5">
@@ -49,6 +50,7 @@ if ($_SESSION['password'] == "") {
 					<h1 class="h3 mb-4 mt-2 text-gray-800"><i class="far fa-paper-plane"></i> HASIL PENCARIANN DARI "<?php echo $cari; ?> "</h1>
 					<hr>
 
+					<!-- Menampilkan hasil pencarian -->
 					<table class="table table-sm table-striped table-bordered">
 						<thead>
 							<tr>
@@ -75,6 +77,7 @@ if ($_SESSION['password'] == "") {
 						<tbody>
 							<?php
 
+							// Jika mencari berdasarkan pengirim
 							if ($pilihan == "Pengirim") {
 								$sql = "SELECT* FROM surat_masuk WHERE surat_dari LIKE '%" . $cari . "%'";
 								$query = mysqli_query($conn, $sql);
@@ -109,6 +112,8 @@ if ($_SESSION['password'] == "") {
 									</p></th></tr>';
 									$no++;
 								}
+
+								// Jika mencari berdasarkan nomor
 							} else if ($pilihan == "Nomor") {
 								$sql = "SELECT* FROM surat_masuk WHERE nmr_surat LIKE '%" . $cari . "%'";
 								$query = mysqli_query($conn, $sql);
@@ -144,12 +149,10 @@ if ($_SESSION['password'] == "") {
 									$no++;
 								}
 							}
-
-
-
 							?>
 						</tbody>
 					</table>
+					<!-- End Of Hasil Pencarian -->
 
 
 

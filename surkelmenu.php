@@ -12,11 +12,13 @@ if ($_SESSION['password'] == "") {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<!-- Judul -->
 	<title>Surat Keluar</title>
 </head>
 
 <body>
 	<?php
+	// Menghubungkan database
 	include('sambungan.php');
 	?>
 	<!-- Page Wrapper -->
@@ -44,6 +46,7 @@ if ($_SESSION['password'] == "") {
 					<!-- Page Heading -->
 					<h1 class="h3 mb-4 mt-2 text-gray-800"><i class="fas fa-paper-plane"></i> SURAT KELUAR</h1>
 
+					<!-- Content -->
 					<div class="mb-3 me-3 text-end"><a class="btn btn-primary" href="surkeltambah.php" role="button"><i class="far fa-plus-square"></i> Tambah Surat</a></div>
 					<table class="table table-sm table-striped table-bordered">
 						<thead>
@@ -64,14 +67,18 @@ if ($_SESSION['password'] == "") {
 						</thead>
 						<tbody>
 							<?php
+							// membatasi database yang ditampilkan
 							$batas   = 4;
+							// menangkap halaman
 							$halaman = @$_GET['halaman'];
+							// jika halaman kosong
 							if (empty($halaman)) {
 								$posisi  = 0;
 								$halaman = 1;
 							} else {
 								$posisi  = ($halaman - 1) * $batas;
 							}
+
 							$sql = "SELECT* FROM surat_keluar order by tgl_surat DESC limit $posisi,$batas";
 							$query = mysqli_query($conn, $sql);
 							$no = $posisi + 1;
@@ -123,6 +130,7 @@ if ($_SESSION['password'] == "") {
 							?>
 						</ul>
 					</div>
+					<!-- End Of Content -->
 
 
 				</div>

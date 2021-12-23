@@ -6,13 +6,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <!-- Judul -->
   <title>Dinas Pendidikan Tuban</title>
 </head>
 
 <body>
+  <!-- Navbar -->
   <?php include('header.php'); ?>
+
   <div class="container">
     <div class="row mt-5">
+
+      <!-- About Dinas Pendidikan -->
       <div class="col-md-7">
         <p class="text-justify font-weight-normal ml-2 mr-2 mt-2"> Dinas Pendidikan merupakan unsur pelaksana Urusan Pemerintahan di bidang pendidikan dipimpin oleh seorang Kepala Dinas yang berkedudukan di bawah dan bertanggungjawab kepada Bupati melalui Sekretaris Daerah. Agar Organisasi lembaga ini dapat menjalankan tugas dan fungsinya maka dengan adanya Keputusan Bupati Nomor 50 Tahun 2016 telah ditetapkan Uraian Tugas Pokok dan fungsi Dinas Pendidikan Kabupaten Tuban. <br /><br />
           Tugas Pokok Dinas Pendidikan adalah membantu Bupati melaksanakan Urusan Pemerintahan di bidang pendidikan yang menjadi kewenangan Daerah dan tugas pembantuan yang diberikan kepada daerah dan mempunyai fungsi sebagai berikut :<br /><br />
@@ -32,6 +37,8 @@
         </ul>
         </p>
       </div>
+
+      <!-- Visi Misi -->
       <div class="col-md-5">
         <div class="list-group-item border-0">
           <center><img src="img/visi.png" width="250px" /><br />
@@ -48,10 +55,9 @@
           </ul>
         </div>
       </div>
+
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
 </body>
 

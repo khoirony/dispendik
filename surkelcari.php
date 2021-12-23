@@ -12,12 +12,16 @@ if ($_SESSION['password'] == "") {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<!-- Judul -->
 	<title>Surat Masuk</title>
 </head>
 
 <body>
 	<?php
+	// menghubungkan database
 	include('sambungan.php');
+
+	// menangkap data get form pencarian
 	$cari = @$_GET['cari'];
 	$pilihan = @$_GET['pilihan'];
 	?>
@@ -47,6 +51,7 @@ if ($_SESSION['password'] == "") {
 					<h1 class="h3 mb-4 mt-2 text-gray-800"><i class="fas fa-paper-plane"></i> HASIL PENCARIAN DARI "<?php echo $cari; ?> "</h1>
 					<hr>
 
+					<!-- Menampilkan List Hasil Pencarian -->
 					<table class="table table-sm table-striped table-bordered">
 						<thead>
 							<tr>
@@ -69,8 +74,8 @@ if ($_SESSION['password'] == "") {
 						</thead>
 						<tbody>
 							<?php
-
 							if ($pilihan == "Kepada") {
+								// Jika Pilihan yang dipilih berdasarkan tujuan surat
 								$sql = "SELECT* FROM surat_keluar WHERE surat_ke LIKE '%" . $cari . "%'";
 								$query = mysqli_query($conn, $sql);
 								$no = 1;
@@ -103,6 +108,7 @@ if ($_SESSION['password'] == "") {
 									$no++;
 								}
 							} else if ($pilihan == "Nomor") {
+								// Jika Pilihan yang dipilih berdasarkan nomor surat
 								$sql = "SELECT* FROM surat_keluar WHERE nmr_surat LIKE '%" . $cari . "%'";
 								$query = mysqli_query($conn, $sql);
 								$no = 1;

@@ -12,10 +12,12 @@ if ($_SESSION['password'] == "") {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Judul -->
     <title>Tambah Surat Keluar</title>
 </head>
 
 <body>
+    <!-- Menghubungkan database -->
     <?php
     include('sambungan.php');
     ?>
@@ -46,20 +48,24 @@ if ($_SESSION['password'] == "") {
                     <h1 class="h3 mb-4 mt-2 text-gray-800"><i class="fas fa-paper-plane"></i> TAMBAH SURAT KELUAR</h1>
 
                     <?php
-                    // Check If form submitted, insert form data into users table.
+                    // jika form telah disubmit
                     if (isset($_POST['Submit'])) {
+                        // menangkap isi form
                         $nomor_surat = $_POST['nomor_surat'];
                         $tanggal_surat = $_POST['tanggal_surat'];
                         $kepada = $_POST['kepada'];
                         $isi = $_POST['isi'];
 
-                        // include database connection file
+                        // menambah data ke database
                         $result = mysqli_query($conn, "INSERT INTO surat_masuk(nmr_surat,tgl_surat,surat_ke,isi) VALUES('$nomor_surat','$tanggal_surat','$kepada','$isi')");
+
+                        // Menampilkan Pesan Berhasil
                         echo '
-                    <h6>Surat Keluar Berhasil Ditambahkan. <a href="surmasmenu.php"><span class="badge badge-secondary">List Surat masuk</span></a></h6> ';
+                        <h6>Surat Keluar Berhasil Ditambahkan. <a href="surmasmenu.php"><span class="badge badge-secondary">List Surat masuk</span></a></h6> ';
                     }
                     ?>
 
+                    <!-- Form Tambah Surat -->
                     <?php echo '<form action="surkeltambah.php" method="POST">'; ?>
                     <div class="form-group">
                         <label>Nomor Surat </label>
@@ -79,6 +85,7 @@ if ($_SESSION['password'] == "") {
                     </div>
                     <input class="btn btn-primary" type="submit" name="Submit" value="Submit">
                     </form>
+                    <!-- End Of Tambah Surat -->
 
                 </div>
                 <!-- /.container-fluid -->

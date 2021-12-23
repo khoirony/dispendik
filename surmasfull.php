@@ -17,8 +17,13 @@ if ($_SESSION['password'] == "") {
 
 <body>
 	<?php
+	// Menghubungkan database
 	include('sambungan.php');
+
+	// Menangkap id
 	$id = $_GET['id'];
+
+	// mengambil data berdasarkan id
 	$sql = "SELECT * FROM surat_masuk WHERE id_suratmasuk=$id";
 	$query = mysqli_query($conn, $sql);
 	$isi = mysqli_fetch_array($query);
@@ -48,6 +53,7 @@ if ($_SESSION['password'] == "") {
 					<!-- Page Heading -->
 					<h1 class="h3 mb-4 mt-2 text-gray-800"><i class="far fa-paper-plane"></i> LIHAT SURAT MASUK</h1>
 
+					<!-- Content -->
 					<table class="table table-borderless">
 						<tbody>
 							<tr>
@@ -72,6 +78,7 @@ if ($_SESSION['password'] == "") {
 							</tr>
 						</tbody>
 					</table>
+					<!-- End of content -->
 
 				</div>
 				<!-- /.container-fluid -->

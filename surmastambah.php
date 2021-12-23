@@ -16,6 +16,7 @@ if ($_SESSION['password'] == "") {
 </head>
 
 <body>
+    <!-- Menghubungkan database -->
     <?php
     include('sambungan.php');
     ?>
@@ -25,7 +26,6 @@ if ($_SESSION['password'] == "") {
 
         <!-- Sidebar -->
         <?php include('menu.php'); ?>
-        <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -35,7 +35,6 @@ if ($_SESSION['password'] == "") {
 
                 <!-- Topbar -->
                 <?php include('surmasnav.php'); ?>
-                <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container ps-5 pe-5">
@@ -47,20 +46,25 @@ if ($_SESSION['password'] == "") {
 
 
                     <?php
-                    // Check If form submitted, insert form data into users table.
+                    // cek tombol submit
                     if (isset($_POST['Submit'])) {
+                        // menangkap isi form
                         $tanggal_masuk = $_POST['tanggal_masuk'];
                         $nomor_surat = $_POST['nomor_surat'];
                         $tanggal_surat = $_POST['tanggal_surat'];
                         $pengirim = $_POST['pengirim'];
                         $isi = $_POST['isi'];
 
-                        // include database connection file
+                        // memasukkan data form ke database
                         $result = mysqli_query($conn, "INSERT INTO surat_masuk(tgl_masuk,nmr_surat,	tgl_surat,surat_dari,isi) VALUES('$tanggal_masuk','$nomor_surat','$tanggal_surat','$pengirim','$isi')");
+
+                        // menampilkan notif berhasil
                         echo '
                             <h6>Surat Masuk Berhasil Ditambahkan. <a href="surmasmenu.php"><span class="badge badge-secondary">List Surat masuk</span></a></h6> ';
                     }
                     ?>
+
+                    <!-- Form Tambah Surat -->
                     <?php echo '<form action="surmastambah.php" method="POST">'; ?>
                     <div class="form-group">
                         <label>Tanggal Masuk</label>
@@ -84,6 +88,7 @@ if ($_SESSION['password'] == "") {
                     </div>
                     <input class="btn btn-primary" type="submit" name="Submit" value="Submit">
                     </form>
+                    <!-- End Of Form -->
 
                 </div>
                 <!-- /.container-fluid -->
